@@ -1,0 +1,8 @@
+.DS_Store
+*.DS_Store
+.idea/
+.idea/*
+.fabfile
+__pychache__/
+*.pyc
+*.dic
