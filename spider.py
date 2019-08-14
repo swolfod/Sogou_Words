@@ -7,7 +7,7 @@ import sys
 import time
 import requests
 from bs4 import BeautifulSoup as bfs
-from SogouWords import cover
+from cover import *
 
 
 HOST = 'https://pinyin.sogou.com/dict/'
@@ -70,8 +70,8 @@ if __name__ == '__main__':
     wordType = [
                    {"uri": "cate/index/1/default/", "dictName": "naturalScience.dic"},     # 自然科学词典
                    {"uri": "cate/index/31/default/", "dictName": "humanities.dic"},        # 人为科学词典
-                   {"uri": "cate/index/76/default/", "dictName": "socialSciences.dic"},    # 社会科学词典
-                   {"uri": "cate/index/96/default/", "dictName": "project.dic"},           # 工程与应该用科学词典
+                   {"uri": "cate/index/76/default/", "dictName": "socialScience.dic"},     # 社会科学词典
+                   {"uri": "cate/index/96/default/", "dictName": "engineering.dic"},       # 工程与应该用科学词典
                    {"uri": "cate/index/127/default/", "dictName": "agriculture.dic"},      # 农林渔畜词典
                    {"uri": "cate/index/132/default/", "dictName": "medicalScience.dic"},   # 医学词典
                    {"uri": "cate/index/154/default/", "dictName": "art.dic"},              # 艺术词典
@@ -79,7 +79,7 @@ if __name__ == '__main__':
                    {"uri": "cate/index/367/default/", "dictName": "sport.dic"},            # 运动休闲词典
                    {"uri": "cate/index/389/default/", "dictName": "life.dic"},             # 生活词典
                    {"uri": "cate/index/403/default/", "dictName": "entertainment.dic"},    # 娱乐词典
-                   {"uri": "cate/index/436/default/", "dictName": "computerame.dic"},      # 电子游戏词典
+                   {"uri": "cate/index/436/default/", "dictName": "games.dic"},            # 电子游戏词典
                ]
 
     for item in wordType:
@@ -93,6 +93,6 @@ if __name__ == '__main__':
             if result:
                 for res in result:
                     res = requests.get(res["link"])
-                    cover.cover2Content(res.content)
-        cover.write2File(dictName)
+                    cover2Content(res.content)
+        write2File(dictName)
     print("TotalTime", int(time.time()) - startTime)
